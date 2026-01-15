@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import photo from "../assets/photo.jpg";
 
 function Home() {
   return (
@@ -61,9 +62,14 @@ function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
       >
-        <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center">
+        <img
+          src={photo}
+          alt="Piotr"
+          className="w-64 h-64 rounded-full object-cover object-top shadow-xl border-4 border-white"
+        />
+        {/* <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center">
           <span className="text-white text-4xl font-bold">P</span>
-        </div>
+        </div> */}
       </motion.div>
     </section>
   );
