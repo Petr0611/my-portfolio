@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 
 function Contact() {
   return (
-    <section id="contact" className="max-w-4xl mx=auto px-4 py-24">
+    <section id="contact" className="max-w-4xl mx-auto px-4 py-24">
       <motion.h2
         className="text-4xl font-bold text-center text-gray-900 mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ function Contact() {
       </motion.h2>
 
       <motion.p
-        className="text-center text-gray-600 text-lg max-w 2xl mx-auto mb-12"
+        className="text-center text-gray-600 text-lg max-w-2xl mx-auto mb-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -30,7 +30,7 @@ function Contact() {
         {/* Email */}
         <motion.a
           href="mailto:ciolacpp@gmail.com"
-          className="p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col align-items-center gap-3"
+          className="p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center gap-3"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

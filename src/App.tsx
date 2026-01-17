@@ -1,26 +1,38 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
 
-      <main className="pt-24 max-w-6xl mx-auto px-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <main className="pt-20">
+        {/* Hero */}
+        <section id="hero" className="scroll-mt-24">
+          <Hero />
+        </section>
+
+        {/* About */}
+        <section id="about" className="scroll-mt-24">
+          <About />
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="scroll-mt-24">
+          <Projects />
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="scroll-mt-24">
+          <Contact />
+        </section>
       </main>
-    </BrowserRouter>
+
+      <Footer />
+    </>
   );
 }
-
-export default App;
