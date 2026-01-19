@@ -1,7 +1,43 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
+import { useState } from "react";
 
 function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const data = { name, email, message };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="max-w-4xl mx-auto px-4 py-24">
       <motion.h2
@@ -26,6 +62,70 @@ function Contact() {
         platforms below.
       </motion.p>
 
+      {/* CONTACT FORM */}
+      <motion.form
+        onSubmit={handleSubmit}
+        className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 mb-12 space-y-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Name</label>
+          <input
+            type="text"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Email</label>
+          <input
+            type="email"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Message
+          </label>
+          <textarea
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 h-32 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition"
+        >
+          Send Message
+        </button>
+
+        {status === "success" && (
+          <p className="text-green-600 text-center font-medium">
+            Message sent successfully!
+          </p>
+        )}
+
+        {status === "error" && (
+          <p className="text-red-600 text-center font-medium">
+            Something went wrong. Try again later.
+          </p>
+        )}
+      </motion.form>
+
+      {/* CONTACT LINKS */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {/* Email */}
         <motion.a
@@ -52,27 +152,27 @@ function Contact() {
           viewport={{ once: true }}
         >
           <svg
-            className="w-8 h-8 text-blue-600 fill-current"
-            role="img"
+            className="w-8 h-8 text-blue-600"
+            fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>GitHub</title>
             <path
+              fill="currentColor"
               d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 
-                 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 
-                 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61 
-                 -.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 
-                 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 
-                 3.492.997.108-.776.418-1.305.762-1.604-2.665-.3-5.466-1.334-5.466-5.93 
-                 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 
-                 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.003-.404 
-                 c1.02.005 2.045.138 3.003.404 2.28-1.552 3.285-1.23 
-                 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 
-                 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92 
-                 .43.372.81 1.102.81 2.222 0 1.606-.015 2.896-.015 3.286 
-                 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297 
-                 c0-6.627-5.373-12-12-12"
+       3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 
+       0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61 
+       -.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 
+       1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 
+       3.492.997.108-.776.418-1.305.762-1.604-2.665-.3-5.466-1.334-5.466-5.93 
+       0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 
+       0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.003-.404 
+       c1.02.005 2.045.138 3.003.404 2.28-1.552 3.285-1.23 
+       3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 
+       1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92 
+       .43.372.81 1.102.81 2.222 0 1.606-.015 2.896-.015 3.286 
+       0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297 
+       c0-6.627-5.373-12-12-12"
             />
           </svg>
 
@@ -91,20 +191,20 @@ function Contact() {
           viewport={{ once: true }}
         >
           <svg
-            className="w-8 h-8 text-blue-600 fill-current"
-            role="img"
+            className="w-8 h-8 text-blue-600"
+            fill="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>LinkedIn</title>
             <path
+              fill="currentColor"
               d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037 
-                -1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049 
-                 c.476-.9 1.637-1.852 3.368-1.852 3.598 0 4.266 2.37 4.266 5.455v6.288zM5.337 
-                 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.814 
-                20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 
-                1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 
-                23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
+       -1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049 
+       c.476-.9 1.637-1.852 3.368-1.852 3.598 0 4.266 2.37 4.266 5.455v6.288zM5.337 
+       7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.814 
+       20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 
+       1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 
+       23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
             />
           </svg>
 
