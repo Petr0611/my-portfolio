@@ -20,25 +20,13 @@ function About() {
         viewport={{ once: true }}
       >
         <p>
-          I’m a passionate Frontend Developer focused on building clean, modern,
-          and user‑friendly interfaces. I enjoy transforming ideas into
-          functional and visually appealing digital experiences using the latest
-          web technologies.
-        </p>
-
-        <p>
-          My main stack includes <strong>React</strong>,{" "}
-          <strong>TypeScript</strong>,<strong> Tailwind CSS</strong>, and{" "}
-          <strong>Vite</strong>. I love working with tools that help me build
-          fast, scalable, and maintainable applications. I’m always exploring
-          new approaches to improve UI/UX and deliver smooth, intuitive
-          interactions.
-        </p>
-
-        <p>
-          I’m detail‑oriented, curious, and constantly learning. Whether it’s
-          refining a component, optimizing performance, or experimenting with
-          new design patterns — I enjoy every part of the process.
+          Fullstack Developer with experience building production-level REST
+          APIs, scalable backend services, and modern frontend interfaces.
+          Strong in Java, Spring Boot, React, and TypeScript. Skilled in
+          architecture, data modeling, error handling, and CI/CD workflows.
+          Collaborative team player with experience working in cross-functional
+          teams of developers and QA testers. Motivated to contribute to
+          impactful projects
         </p>
       </motion.div>
 
@@ -52,12 +40,30 @@ function About() {
         {[
           "React",
           "TypeScript",
+          "Node.js",
+          "Redux Toolkit",
           "JavaScript",
           "TailWind CSS",
+          "Axios",
+          "React Router",
+          "Formik",
           "Vite",
+          "Java",
+          "Spring Boot",
+          "Hibernate",
+          "PostgreSQL",
+          "MySQL",
+          "JPA",
+          "Gradle",
+          "Maven",
           "Git",
           "REST APIs",
-          "Responsive Design",
+          "Docker",
+          "GitHub Actions",
+          "CI/CD",
+          "Swagger/OpenAPI",
+          "Postmann",
+          "Linux CLI",
         ].map((skill) => (
           <span
             key={skill}

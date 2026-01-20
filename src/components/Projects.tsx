@@ -62,9 +62,9 @@ function Projects() {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+            {/* <div className="h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400">
               {repo.language || "Project"}
-            </div>
+            </div> */}
 
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               {repo.name}

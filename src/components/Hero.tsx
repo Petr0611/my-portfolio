@@ -19,7 +19,7 @@ export default function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Hi, I'm Petr
+        Hi, I'm Piotr
       </motion.h1>
 
       <motion.p
@@ -28,8 +28,8 @@ export default function Hero() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        A passionate frontend developer focused on building clean, modern and
-        user‑friendly web experiences.
+        Fullstack Developer specializing in Java, Spring Boot, React, Node.js
+        and scalable web applications.
       </motion.p>
 
       <motion.a
