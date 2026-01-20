@@ -12,9 +12,10 @@ function Contact() {
     e.preventDefault();
 
     const data = { name, email, message };
+    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -212,6 +213,31 @@ function Contact() {
           <span className="text-gray-500 text-sm">
             linkedin.com/in/petr-ciolac-304503339/
           </span>
+        </motion.a>
+
+        {/* Upwork */}
+        <motion.a
+          href="https://www.upwork.com/freelancers/~0110f74c5a0dc4aed7"
+          target="_blank"
+          className="p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center gap-3"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <svg
+            className="w-8 h-8 text-green-600 fill-current"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="currentColor"
+              d="M17.4 3c-2.3 0-4.2 1.9-4.2 4.2v3.1c-.7-.9-1.3-2-1.7-3.1H8.9v3.1c0 1.2-.9 2.1-2.1 2.1S4.7 11.4 4.7 10.2V7.2H2v3c0 2.3 1.9 4.2 4.2 4.2 1.8 0 3.3-1.1 3.9-2.6.6 1 1.3 2 2.1 2.8v5.4h2.6v-4.4c.7.3 1.5.4 2.3.4 2.3 0 4.2-1.9 4.2-4.2V7.2h-2.6v3c0 1.2-.9 2.1-2.1 2.1s-2.1-.9-2.1-2.1v-3c0-1.2.9-2.1 2.1-2.1S19.5 6 19.5 7.2h2.6C22.1 4.9 20.2 3 17.9 3h-.5z"
+            />
+          </svg>
+
+          <span className="text-gray-900 font-medium">Upwork</span>
+          <span className="text-gray-500 text-sm">Hire me on Upwork</span>
         </motion.a>
       </div>
     </section>
