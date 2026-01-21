@@ -129,8 +129,8 @@ function Contact() {
       {/* CONTACT LINKS */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {/* Email */}
-        {/* <motion.a
-          href="mailto:ciolacpp@gmail.com"
+        <motion.a
+          // href="mailto:ciolacpp@gmail.com"
           className="p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center gap-3"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -140,7 +140,7 @@ function Contact() {
           <Mail className="w-8 h-8 text-blue-600" />
           <span className="text-gray-900 font-medium">Email</span>
           <span className="text-gray-500 text-sm">ciolacpp@gmail.com</span>
-        </motion.a> */}
+        </motion.a>
 
         {/* GitHub */}
         <motion.a
@@ -216,7 +216,7 @@ function Contact() {
         </motion.a>
 
         {/* Upwork */}
-        <motion.a
+        {/* <motion.a
           href="https://www.upwork.com/freelancers/~0110f74c5a0dc4aed7"
           target="_blank"
           className="p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center gap-3"
@@ -238,7 +238,7 @@ function Contact() {
 
           <span className="text-gray-900 font-medium">Upwork</span>
           <span className="text-gray-500 text-sm">Hire me on Upwork</span>
-        </motion.a>
+        </motion.a> */}
       </div>
     </section>
   );
