@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import photo from "../assets/photo.jpg";
-
 export default function Hero() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-32 text-center">

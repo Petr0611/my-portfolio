@@ -23,8 +23,6 @@ function Contact() {
         body: JSON.stringify(data),
       });
 
-      // const result = await response.json();
-
       if (response.ok) {
         setStatus("success");
         setName("");
