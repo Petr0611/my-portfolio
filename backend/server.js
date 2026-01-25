@@ -10,7 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://piotr-portfolio.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://my-portfolio-2-4wpp.onrender.com",
+    ],
     methods: ["POST"],
     credentials: true,
   }),
