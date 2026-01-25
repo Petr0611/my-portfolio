@@ -12,12 +12,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://my-portfolio-2-4wpp.onrender.com",
+      "https://my-portfolio-2-2wpp.onrender.com",
     ],
     methods: ["POST"],
     credentials: true,
   }),
 );
+
 app.use(express.json());
 
 app.post("/api/contact", async (req, res) => {
