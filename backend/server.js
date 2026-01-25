@@ -5,9 +5,6 @@ const nodemailer = require("nodemailer");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.options("*", cors());
-
 app.use(
   cors({
     origin: [
@@ -19,6 +16,7 @@ app.use(
   }),
 );
 
+app.options("*", cors());
 app.use(express.json());
 
 app.post("/api/contact", async (req, res) => {
@@ -27,26 +25,28 @@ app.post("/api/contact", async (req, res) => {
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
+
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      port: Number(process.env.SMTP_PORT),
       secure: false,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
+
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
       to: process.env.EMAIL_TO,
       subject: `New message from ${name}`,
-      html: ` 
-      <h2>New Contact Message</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message}</p> 
+      html: `
+        <h2>New Contact Message</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
       `,
     });
 
