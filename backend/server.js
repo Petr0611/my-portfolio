@@ -1,8 +1,5 @@
-require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
-const { error } = require("node:console");
 const nodemailer = require("nodemailer");
 
 const app = express();
