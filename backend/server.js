@@ -21,8 +21,6 @@ app.use(
 
 app.use(express.json());
 
-app.use(express.json());
-
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -31,22 +29,28 @@ app.post("/api/contact", async (req, res) => {
   }
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
     await transporter.sendMail({
-      from: `"Portfolio Contact" <ciolacpp@gmail.com>`,
-      to: "ciolacpp@gmail.com",
+      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
+      to: process.env.EMAIL_TO,
       subject: `New message from ${name}`,
-      html: ` <h2>New Contact Message</h2>
-       <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-         <p><strong>Message:</strong></p>
-          <p>${message}</p> `,
+      html: ` 
+      <h2>New Contact Message</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p> 
+      `,
     });
+
+    console.log("Email sent successfully");
     return res.status(200).json({ success: true, message: "Email sent" });
   } catch (error) {
     console.error("Email error:", error);
