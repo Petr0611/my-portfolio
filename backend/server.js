@@ -8,16 +8,21 @@ const nodemailer = require("nodemailer");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
+app.options("*", cors());
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
       "https://my-portfolio-2-2wqp.onrender.com",
     ],
-    methods: ["POST"],
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   }),
 );
+
+app.use(express.json());
 
 app.use(express.json());
 
